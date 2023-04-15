@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Venta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css' )}}">
+</head>
+<body>
+	<h1>Venta de productos</h1>
+	<form method="POST" action="/resultado">
+		<label>Producto:</label>
+		<select name="producto" id="producto">
+			<option value="Lavadora" data-precio="1500000">Lavadora</option>
+			<option value="Refrigerador" data-precio="3500000">Refrigerador</option>
+			<option value="Radiograbadora" data-precio="500000">Radiograbadora</option>
+			<option value="Tostadora" data-precio="700000">Tostadora</option>
+		</select>
+		<br>
+		<label>Precio:</label>
+		<input type="text" name="precio" id="precio" readonly>
+		<br>
+		<label>Cantidad:</label>
+		<input type="number" name="cantidad" id="cantidad" min="1" required>
+		<br>
+		<label>Cuotas:</label>
+		<select name="cuotas" id="cuotas" required>
+			<option value="3">3</option>
+			<option value="6">6</option>
+			<option value="12">12</option>
+		</select>
+		<br><br>
+		<button type="submit">Calcular</button>
+	</form>
+	<br>
+	<a href="/">Volver</a>
+    <script>
+        document.getElementById("producto").addEventListener("change", function(){
+            var precio = document.getElementById("precio");
+            precio.value = this.options[this.selectedIndex].getAttribute('data-precio');
+        });
+    
+        document.getElementById("cuotas").addEventListener("change", function(){
+            var subtotal = parseInt(document.getElementById("precio").value) * parseInt(document.getElementById("cantidad").value);
+            var cuotas = parseInt(this.value);
+            var monto_cuota = subtotal / cuotas;
+            document.getElementById("total").innerHTML = "$" + monto_cuota.toFixed(2);
+        });
+    </script>
+    
+</body>
+</html>

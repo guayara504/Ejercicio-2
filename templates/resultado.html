@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resultado</title>
+</head>
+<body>
+	<h1>Resumen de la venta</h1>
+	<table>
+		<tr>
+			<td>Producto:</td>
+			<td>{{ producto }}</td>
+		</tr>
+		<tr>
+			<td>Precio:</td>
+			<td>${{ precio }}</td>
+		</tr>
+		<tr>
+			<td>Cantidad:</td>
+			<td>{{ cantidad }}</td>
+		</tr>
+		<tr>
+			<td>Cuotas:</td>
+			<td>{{ cuotas }}</td>
+		</tr>
+		<tr>
+			<td>Monto de cada cuota:</td>
+			<td id="total">${{ total }}</td>
+		</tr>
+	</table>
+	<br>
+	<a href="/">Volver</a>
+</body>
+</html>
